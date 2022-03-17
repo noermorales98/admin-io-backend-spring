@@ -4,8 +4,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.io.admin.dto.users.BeeceptorDTO;
+import com.io.admin.dto.users.MemberDTO;
 import com.io.admin.dto.users.NoeliDTO;
+import com.io.admin.model.Administrator;
 import com.io.admin.model.Member;
+import com.io.admin.model.Work;
+import com.io.admin.repository.AdminRepository;
+import com.io.admin.repository.WorkRepository;
 import com.io.admin.service.ApplicationService;
 import com.io.admin.service.HttpService;
 import com.io.admin.dto.youtube.YouTubeItemsDTO;
@@ -24,9 +29,12 @@ import java.util.List;
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
-
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    AdminRepository adminRepository;
+    @Autowired
+    WorkRepository workRepository;
     @Override
     public String firstService(){
         return "Bienvenido";
@@ -120,12 +128,59 @@ public class ApplicationServiceImpl implements ApplicationService {
         return noeliDTO;
     }
 
-    public  void myObjectNoe(){
+    //CASI FUNCIONAL, NO GUARDA DATOS EN BD
+    @Override
+    public MemberDTO addMemberDTO(MemberDTO memberDTO) throws IOException{
+        JsonParser p1 = new JsonParser();
+        JsonObject json = (JsonObject) p1.parse(httpService.sendRequestHttpS("https://addmember.free.beeceptor.com","POST",null,null,"json",memberDTO.toJSON(), null));
+        System.out.println(json.get("status"));
+        if(json.get("status")== null){
+            throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("id")== null){
+            throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+        }
+        memberDTO.setDescription_member(String.valueOf(json.get("status")));
+        memberDTO.setEmail_member(String.valueOf(json.get("name")));
+        memberDTO.setName_member(String.valueOf(json.get("name")));
+        String phone = String.valueOf(json.get("phone"));
+        memberDTO.setPhone_member(Integer.parseInt(phone));
+        memberDTO.setPassword_member(String.valueOf(json.get("passwd")));
+        return  memberDTO;
+    }
+
+    public void myObjectNoe(){
         Member usury = new Member();
         usury.setName_member("Noeli");
-        usury.setEmail_member("as");
+        usury.setEmail_member("asasas");
         usury.setPassword_member("asas");
         usury.setPhone_member(1199);
         memberRepository.save(usury);
+    }
+
+    public void saveMembers(MemberDTO memberDTO) throws IOException{
+        Member m1 = new Member();
+        m1.setPhone_member(memberDTO.getPhone_member());
+        m1.setDescription_member(memberDTO.getDescription_member());
+        m1.setEmail_member(memberDTO.getEmail_member());
+        m1.setName_member(memberDTO.getName_member());
+    }
+
+    @Override
+    public Member addMember(Member member){
+        return memberRepository.save(member);
+    }
+
+    @Override
+    public Administrator addAdmin(Administrator administrator) {
+        return adminRepository.save(administrator);
+    }
+
+    @Override
+    public Work addWork(Work work) {
+        return workRepository.save(work);
     }
 }

@@ -1,13 +1,16 @@
 package com.io.admin.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Administrator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_administrator;
+
     String name_administrator;
     String email_administrator;
     String password_administrator;

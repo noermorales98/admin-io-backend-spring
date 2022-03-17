@@ -11,6 +11,7 @@ public class Work {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_work;
+
     String name_work;
     String description_work;
     String priority_work;

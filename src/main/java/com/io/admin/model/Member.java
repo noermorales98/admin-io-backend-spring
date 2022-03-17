@@ -1,11 +1,12 @@
 package com.io.admin.model;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//entity
 @Entity
 public class Member {
     @Id
