@@ -66,4 +66,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     public Optional<Workgroup> getWorkgroup(int wgID) {
         return workgroupRepository.findById(wgID);
     }
+
+    @Override
+    public String deleteMember(int memberID) {
+        memberRepository.deleteById(memberID);
+        return "Borrado";
+    }
+
+
+
 }

@@ -73,4 +73,10 @@ public class ApplicationController {
         return new ResponseEntity(work, HttpStatus.OK);
     }
 
+    //################### DELETE
+    @RequestMapping(value = "/deleteMember")
+    public String deleteMember(@RequestParam(value = "id") int id){
+        applicationService.deleteMember(id);
+        return "borrado";
+    }
 }

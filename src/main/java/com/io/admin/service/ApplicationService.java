@@ -23,4 +23,9 @@ public interface ApplicationService {
     Optional<Administrator> getAdmin(long id);
     Optional<Work> getWork(long workid);
     Optional<Workgroup> getWorkgroup(int wgID);
+
+    //UPDATE
+
+    //DELETE
+    String deleteMember(int memberID);
 }
