@@ -1,20 +1,15 @@
 package com.io.admin.controller;
 
-import com.io.admin.dto.users.BeeceptorDTO;
-import com.io.admin.dto.youtube.YouTubeMergeDTO;
 import com.io.admin.model.Administrator;
 import com.io.admin.model.Member;
 import com.io.admin.model.Work;
 import com.io.admin.service.ApplicationService;
-import com.io.admin.dto.users.*;
 import com.io.admin.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 import java.util.Optional;
 
 @RestController
@@ -59,9 +54,23 @@ public class ApplicationController {
     }
 
     //################ READ ########################################
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    //member
+    @RequestMapping(value = "/getMember", method = RequestMethod.GET)
     public ResponseEntity<Member> userById(@RequestParam(value = "id") long id) {
         Optional<Member> user = applicationService.getMember(id);
         return new ResponseEntity(user, HttpStatus.OK);
     }
+    //admin
+    @RequestMapping(value = "/getAdmin", method = RequestMethod.GET)
+    public ResponseEntity<Administrator> adminById(@RequestParam(value = "id") long id){
+        Optional<Administrator> admin = applicationService.getAdmin(id);
+        return new ResponseEntity(admin, HttpStatus.OK);
+    }
+    //work
+    @RequestMapping(value = "/getWork", method = RequestMethod.GET)
+    public ResponseEntity<Work> workById(@RequestParam(value = "id") long workid){
+        Optional<Work> work = applicationService.getWork(workid);
+        return new ResponseEntity(work, HttpStatus.OK);
+    }
+
 }

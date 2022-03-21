@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,8 +17,8 @@ public class Work {
     String description_work;
     String priority_work;
     String process_work;
-    Date startdate_work;
-    Date enddate_work;
+    LocalDate startdate_work;
+    LocalDate enddate_work;
 
     public Work() {
     }
@@ -62,19 +63,19 @@ public class Work {
         this.process_work = process_work;
     }
 
-    public Date getStartdate_work() {
+    public LocalDate getStartdate_work() {
         return startdate_work;
     }
 
-    public void setStartdate_work(Date startdate_work) {
+    public void setStartdate_work(LocalDate startdate_work) {
         this.startdate_work = startdate_work;
     }
 
-    public Date getEnddate_work() {
+    public LocalDate getEnddate_work() {
         return enddate_work;
     }
 
-    public void setEnddate_work(Date enddate_work) {
+    public void setEnddate_work(LocalDate enddate_work) {
         this.enddate_work = enddate_work;
     }
 }

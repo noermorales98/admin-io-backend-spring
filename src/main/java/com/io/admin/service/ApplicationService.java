@@ -1,19 +1,12 @@
 package com.io.admin.service;
 
-import com.io.admin.dto.users.BeeceptorDTO;
-import com.io.admin.dto.users.MemberDTO;
-import com.io.admin.dto.users.NoeliDTO;
-import com.io.admin.dto.youtube.YouTubeMergeDTO;
 import com.io.admin.model.Administrator;
 import com.io.admin.model.Member;
 import com.io.admin.model.Work;
+import com.io.admin.model.Workgroup;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.io.IOException;
 import java.util.Optional;
 
-//ji
 @Service
 public interface ApplicationService {
     String firstService();
@@ -27,4 +20,7 @@ public interface ApplicationService {
 
     //READ
     Optional<Member> getMember(long memberID);
+    Optional<Administrator> getAdmin(long id);
+    Optional<Work> getWork(long workid);
+    Optional<Workgroup> getWorkgroup(int wgID);
 }
