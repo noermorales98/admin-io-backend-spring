@@ -1,11 +1,11 @@
 package com.io.admin.service;
 
-import com.io.admin.model.Administrator;
-import com.io.admin.model.Member;
-import com.io.admin.model.Work;
-import com.io.admin.model.Workgroup;
+import com.io.admin.model.*;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public interface ApplicationService {
@@ -13,19 +13,35 @@ public interface ApplicationService {
 
     //BASE DE DATOS ADMIN.IO
     //#################### CRUD #######################33
-    //CREATE
+    //TODO CREATE
     Member addMember(Member member);
     Administrator addAdmin(Administrator administrator);
     Work addWork(Work work);
+    Workgroup addWorkgroup(Workgroup workgroup);
 
-    //READ
+    //TODO READ
     Optional<Member> getMember(long memberID);
+    List<Member> memberlist();
+
     Optional<Administrator> getAdmin(long id);
+    List<Administrator> adminlist();
+    
     Optional<Work> getWork(long workid);
+    List<Work> worklist();
+    
     Optional<Workgroup> getWorkgroup(int wgID);
+    List<Workgroup> workgroupList();
 
-    //UPDATE
+    //TODO UPDATE
+    void updateMember(int memberID);
 
-    //DELETE
+    //TODO DELETE
     String deleteMember(int memberID);
+    void deleteAdmin(int adminID);
+    void deleteWork(int workID);
+    void deleteWorkgroup(int workgroupID);
+
+    
+
+    
 }

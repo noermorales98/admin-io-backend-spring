@@ -12,8 +12,8 @@ public class Workgroup {
     int id_workgroup;
     String name_workgroup;
     String description_workgroup;
-    int member_id_member;
-    int work_id_work;
+    int administrator_id_administrator;
+
 
     public Workgroup() {
     }
@@ -42,19 +42,12 @@ public class Workgroup {
         this.description_workgroup = description_workgroup;
     }
 
-    public int getMember_id_member() {
-        return member_id_member;
+    public int getAdministrator_id_administrator() {
+        return administrator_id_administrator;
     }
 
-    public void setMember_id_member(int member_id_member) {
-        this.member_id_member = member_id_member;
+    public void setAdministrator_id_administrator(int administrator_id_administrator) {
+        this.administrator_id_administrator = administrator_id_administrator;
     }
 
-    public int getWork_id_work() {
-        return work_id_work;
-    }
-
-    public void setWork_id_work(int work_id_work) {
-        this.work_id_work = work_id_work;
-    }
 }
