@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/adminapi/v1",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/adminapi/v1")
 public class ApplicationController {
 
     @Autowired
@@ -35,7 +35,6 @@ public class ApplicationController {
     //#############################################################
 
     //TODO CREATE
-
     //CREAR MEMBERS
     @RequestMapping(value = "/createMember", method = RequestMethod.POST)
     public ResponseEntity<Member> create(@RequestBody Member member){
@@ -43,6 +42,7 @@ public class ApplicationController {
         return new ResponseEntity(member1, HttpStatus.CREATED);
     }
     //CREAR ADMIN
+    //@CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/createAdmin", method = RequestMethod.POST)
     public ResponseEntity<Administrator> addAdmin(@RequestBody Administrator administrator){
         Administrator administrator1 = applicationService.addAdmin(administrator);
