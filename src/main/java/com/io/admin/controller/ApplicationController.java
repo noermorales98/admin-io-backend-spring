@@ -114,16 +114,17 @@ public class ApplicationController {
 
     //TODO DELETE
     @RequestMapping(value = "/deleteMember")
-    public String deleteMember(@RequestParam(value = "id") int id){
-        Optional<Member> m1 = applicationService.getMember(id);
-        System.out.println(m1);
-        if(m1.isEmpty()){
+    public String deleteMember(@RequestBody Member id){
+        //Optional<Member> m1 = applicationService.getMember(id);
+        System.out.println(id);
+        /*if(m1.isEmpty()){
             return "no existe";
-        }
-        else{
-            applicationService.deleteMember(id);
-            return "borrado";
-        }
+        }*/
+        /*else{
+
+        }*/
+        applicationService.deleteMember(id);
+        return "borrado";
     }
     @RequestMapping(value = "/deleteAdmin")
     public String deleteAdmin(@RequestParam(value = "id") int id){
@@ -137,15 +138,9 @@ public class ApplicationController {
         }
     }
     @RequestMapping(value = "/deleteWork")
-    public String deleteWork(@RequestParam(value = "id") int id){
-        Optional<Work> work = applicationService.getWork(id);
-        if (work.isEmpty()){
-            return "No existe";
-        }
-        else {
-            applicationService.deleteWork(id);
-            return "Borrado";
-        }
+    public String deleteWork(@RequestBody Work id){
+        applicationService.deleteWork(id);
+        return "Borrado";
     }
     @RequestMapping(value = "/deleteWorkgroup")
     public String deleteWorkgroup(@RequestParam(value = "id")int id){

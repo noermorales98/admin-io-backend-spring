@@ -118,8 +118,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     //TODO DELETE
     @Override
-    public String deleteMember(int memberID) {
-        memberRepository.deleteById(memberID);
+    public String deleteMember(Member memberID) {
+        memberRepository.delete(memberID);
         return "Borrado";
     }
 
@@ -129,8 +129,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void deleteWork(int workID) {
-        workRepository.deleteById(workID);
+    public void deleteWork(Work workID) {
+        workRepository.delete(workID);
     }
 
     @Override

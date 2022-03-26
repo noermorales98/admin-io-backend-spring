@@ -36,9 +36,9 @@ public interface ApplicationService {
     void updateMember(int memberID);
 
     //TODO DELETE
-    String deleteMember(int memberID);
+    String deleteMember(Member memberID);
     void deleteAdmin(int adminID);
-    void deleteWork(int workID);
+    void deleteWork(Work workID);
     void deleteWorkgroup(int workgroupID);
 
     
