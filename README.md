@@ -38,7 +38,7 @@ localhost:8080/adminapi/v1/createAdmin
     "description_administrator": "asasas"
     }
 
-##GET
+## GET 
 #### CONSULTAR
 - localhost:8080/adminapi/v1/getMembers
 - localhost:8080/adminapi/v1/getWorks
