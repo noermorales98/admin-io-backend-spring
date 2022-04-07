@@ -2,6 +2,10 @@
 
 Este es el backend de nuestra página web
 
+
+### Utiliza MYSQL
+Puedes crear la BD por aquí https://github.com/noermorales98/admin-io-backend-spring/blob/master/BASE_DE_DATOS_MYSQL/adminbasededatos.sql
+
 **Consultas:**
 ## POST
 #### CREAR
